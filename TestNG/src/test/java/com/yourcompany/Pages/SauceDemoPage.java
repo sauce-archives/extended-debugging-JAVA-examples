@@ -68,7 +68,7 @@ public class SauceDemoPage {
         }
     }
 
-    public Map getPeroformance() {
+    public Map getPerformance() {
         Map<String, Object> logType = new HashMap();
         logType.put("type","sauce:performance");
         return (Map<String, Object>) this.jsDriver.executeScript("sauce:log", logType);

@@ -25,7 +25,7 @@ public class PerformanceTest extends TestBase {
         page.loginUser();
         page.visitPage("/inventory.html");
         page.sleep(2000);
-        Map<String, Object> performance = page.getPeroformance();
+        Map<String, Object> performance = page.getPerformance();
 
         // Checking metrics existence
 
