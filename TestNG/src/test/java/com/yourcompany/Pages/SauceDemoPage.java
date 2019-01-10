@@ -45,7 +45,8 @@ public class SauceDemoPage {
     }
 
     public void loginUser() {
-        this.enterUsername("standard_user");
+        String username = System.getenv("PERF_USERNAME") != null ? System.getenv("PERF_USERNAME") : "standard_user";
+        this.enterUsername(username);
         this.enterPassword("secret_sauce");
         loginElem.click();
     }
