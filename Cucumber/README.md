@@ -30,6 +30,15 @@
 $ make run_all_in_parallel
 ```
 
+### Test Performance Regression
+
+In demo app, we have `performance_glitch_user` user to test performance regression. By using this user PageLoad time will be increased by 5s and existing test case will be failed.
+
+```
+$ PERF_USERNAME=performance_glitch_user make run_all_in_parallel
+```
+
+
 [Sauce Labs Dashboard](https://saucelabs.com/beta/dashboard/)
 
 ### Advice/Troubleshooting
