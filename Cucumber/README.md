@@ -27,7 +27,7 @@
     
 ### Running the tests
 ```
-$ make run_all_in_parallel
+$ make test
 ```
 
 ### Test Performance Regression
