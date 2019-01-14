@@ -1,4 +1,4 @@
-run_all_in_parallel:
+test:
 	make clean_it test_parallel
 
 clean_it:
