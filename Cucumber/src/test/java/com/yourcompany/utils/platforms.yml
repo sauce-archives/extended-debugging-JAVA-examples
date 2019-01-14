@@ -1,0 +1,15 @@
+windows_10:
+  seleniumVersion: '3.4.0'
+  platform: Windows 10
+  browserName: Chrome
+  version: 'latest-1'
+windows_8:
+  seleniumVersion: '3.4.0'
+  platform: Windows 8
+  browserName: Chrome
+  version: 'latest-1'
+mac_sierra:
+  seleniumVersion: '3.4.0'
+  platform: macOS 10.12
+  browserName: Chrome
+  version: 'latest-1'

@@ -24,3 +24,8 @@ hs_err_pid*
 .DS_Store
 
 Junit/target
+
+.classpath
+.project
+.settings
+target
