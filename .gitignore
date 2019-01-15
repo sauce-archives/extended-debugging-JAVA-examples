@@ -15,10 +15,17 @@ hs_err_pid*
 # Created by .ignore support plugin (hsz.mobi)
 
 target/
+.DS_Store
 *.iml
 .idea
-.DS_Store
 
 TestNG/.settings
 TestNG/.classpath
 TestNG/.project
+
+Junit/target
+
+.classpath
+.project
+.settings
+target
