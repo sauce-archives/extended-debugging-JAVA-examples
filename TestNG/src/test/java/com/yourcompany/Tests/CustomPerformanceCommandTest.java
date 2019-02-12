@@ -24,9 +24,9 @@ public class CustomPerformanceCommandTest extends TestBase {
         page.loginUser();
         page.visitPage("/inventory.html");
         page.sleep(2000);
-        Boolean pageLoad = page.assertPerformance(method.getName());
+        Boolean pageLoad = page.assertPerformancePageLoad(method.getName());
         Assert.assertTrue(pageLoad);
-        Boolean requests = page.assertRequests(method.getName());
+        Boolean requests = page.assertPerformancePageWeight(method.getName());
         Assert.assertTrue(requests);
     }
 

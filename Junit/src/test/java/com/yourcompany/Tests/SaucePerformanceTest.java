@@ -19,9 +19,9 @@ public class SaucePerformanceTest extends TestBase {
         page.loginUser();
         page.visitPage("/inventory.html");
         page.sleep(2000);
-        Boolean loadTime = page.assertPerformance(methodName);
+        Boolean loadTime = page.assertPerformancePageLoad(methodName);
         assertTrue(loadTime);
-        Boolean requests = page.assertRequests(methodName);
+        Boolean requests = page.assertPerformancePageWeight(methodName);
         assertTrue(requests);
     }
 

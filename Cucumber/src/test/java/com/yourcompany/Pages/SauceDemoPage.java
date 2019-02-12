@@ -94,7 +94,7 @@ public class SauceDemoPage {
         return (Map<String, Object>) this.jsDriver.executeScript("sauce:log", logType);
     }
 
-    public boolean assertPerformance(String name) {
+    public boolean assertPerformancePageLoad(String name) {
         Map<String, Object> logType = new HashMap();
         String myArray[] = { "load" };
         logType.put("name",name);
@@ -102,7 +102,7 @@ public class SauceDemoPage {
         return (Boolean) this.jsDriver.executeScript("sauce:performance", logType);
     }
 
-    public boolean assertRequests(String name) {
+    public boolean assertPerformancePageWeight(String name) {
         Map<String, Object> logType = new HashMap();
         String myArray[] = { "pageWeight" };
         logType.put("name",name);

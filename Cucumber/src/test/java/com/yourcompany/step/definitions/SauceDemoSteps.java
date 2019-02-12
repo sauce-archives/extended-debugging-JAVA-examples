@@ -115,9 +115,9 @@ public class SauceDemoSteps {
         assertTrue(timingLog.containsKey("domLoading"));
     }
 
-    @When("^I execute sauce:performance with test name$")
+    @When("^I execute sauce:performance on page load$")
     public void user_execute_performance() throws Exception {
-        performanceOutput = page.assertPerformance(scenarioRef.getName());
+        performanceOutput = page.assertPerformancePageLoad(scenarioRef.getName());
     }
 
     @Then("^sauce:performance should assert performance is okay$")
@@ -127,7 +127,7 @@ public class SauceDemoSteps {
 
     @When("^I execute sauce:performance with on number of requests$")
     public void user_execute_performance_requests() throws Exception {
-        requestsOutput = page.assertRequests(scenarioRef.getName());
+        requestsOutput = page.assertPerformancePageWeight(scenarioRef.getName());
     }
 
     @Then("^sauce:performance should assert number of requests is okay$")
