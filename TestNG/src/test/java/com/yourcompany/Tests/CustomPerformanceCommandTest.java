@@ -10,7 +10,7 @@ import java.lang.reflect.Method;
 import java.net.MalformedURLException;
 import java.rmi.UnexpectedException;
 
-public class HelloOutputTest extends TestBase {
+public class CustomPerformanceCommandTest extends TestBase {
     @Test(dataProvider = "hardCodedBrowsers")
     public void verifyHelloOutput(String browser, String version, String os, Method method)
             throws MalformedURLException, InvalidElementStateException, UnexpectedException {
@@ -24,8 +24,10 @@ public class HelloOutputTest extends TestBase {
         page.loginUser();
         page.visitPage("/inventory.html");
         page.sleep(2000);
-        String result = page.getHelloOutput(method.getName());
-        Assert.assertTrue(result.contains(method.getName()));
+        Boolean pageLoad = page.assertPerformancePageLoad(method.getName());
+        Assert.assertTrue(pageLoad);
+        Boolean requests = page.assertPerformancePageWeight(method.getName());
+        Assert.assertTrue(requests);
     }
 
 }

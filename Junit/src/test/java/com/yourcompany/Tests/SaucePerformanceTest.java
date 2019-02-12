@@ -6,9 +6,9 @@ import org.openqa.selenium.InvalidElementStateException;
 
 import static org.junit.Assert.*;
 
-public class HelloOutputTest extends TestBase {
+public class SaucePerformanceTest extends TestBase {
 
-    public HelloOutputTest(String os, String version, String browser, String deviceName, String deviceOrientation) {
+    public SaucePerformanceTest(String os, String version, String browser, String deviceName, String deviceOrientation) {
         super(os, version, browser, deviceName, deviceOrientation);
     }
 
@@ -19,8 +19,10 @@ public class HelloOutputTest extends TestBase {
         page.loginUser();
         page.visitPage("/inventory.html");
         page.sleep(2000);
-        String output = page.getHelloOutput(methodName);
-        assertTrue(output.contains(methodName));
+        Boolean loadTime = page.assertPerformancePageLoad(methodName);
+        assertTrue(loadTime);
+        Boolean requests = page.assertPerformancePageWeight(methodName);
+        assertTrue(requests);
     }
 
 }
