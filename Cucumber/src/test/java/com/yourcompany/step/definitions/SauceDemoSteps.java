@@ -36,7 +36,8 @@ public class SauceDemoSteps {
     public Map<String, Object> metrics;
     List<Map<String, Object>> network;
     Map<String, Object> timingLog;
-    public String helloOutput;
+    public Boolean performanceOutput;
+    public Boolean requestsOutput;
     public String sessionId;
     public Scenario scenarioRef;
 
@@ -114,14 +115,24 @@ public class SauceDemoSteps {
         assertTrue(timingLog.containsKey("domLoading"));
     }
 
-    @When("^I execute sauce:hello with test name$")
-    public void user_execute_hello() throws Exception {
-        helloOutput = page.getHelloOutput(scenarioRef.getName());
+    @When("^I execute sauce:performance with test name$")
+    public void user_execute_performance() throws Exception {
+        performanceOutput = page.assertPerformance(scenarioRef.getName());
     }
 
-    @Then("^Hello should return test name$")
-    public void hello_should_return_name() throws Exception {
-        assertTrue(helloOutput.contains(scenarioRef.getName()));
+    @Then("^sauce:performance should assert performance is okay$")
+    public void performance_should_assert_performance() throws Exception {
+        assertTrue(performanceOutput);
+    }
+
+    @When("^I execute sauce:performance with on number of requests$")
+    public void user_execute_performance_requests() throws Exception {
+        requestsOutput = page.assertRequests(scenarioRef.getName());
+    }
+
+    @Then("^sauce:performance should assert number of requests is okay$")
+    public void performance_should_assert_performance_requests() throws Exception {
+        assertTrue(requestsOutput);
     }
 
     @After
