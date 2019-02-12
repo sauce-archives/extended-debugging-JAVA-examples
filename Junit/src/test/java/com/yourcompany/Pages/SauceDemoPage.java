@@ -9,6 +9,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import org.openqa.selenium.logging.LogEntries;
 import org.openqa.selenium.logging.LogEntry;
 import org.openqa.selenium.JavascriptExecutor;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -93,12 +94,21 @@ public class SauceDemoPage {
         return (Map<String, Object>) this.jsDriver.executeScript("sauce:log", logType);
     }
 
-    public String getHelloOutput(String name) {
+    public boolean assertPerformance(String name) {
         Map<String, Object> logType = new HashMap();
+        String myArray[] = { "load" };
         logType.put("name",name);
-        return (String) this.jsDriver.executeScript("sauce:hello", logType);
+        logType.put("metrics", myArray);
+        return (Boolean) this.jsDriver.executeScript("sauce:performance", logType);
     }
 
+    public boolean assertRequests(String name) {
+        Map<String, Object> logType = new HashMap();
+        String myArray[] = { "pageWeight" };
+        logType.put("name",name);
+        logType.put("metrics", myArray);
+        return (Boolean) this.jsDriver.executeScript("sauce:performance", logType);
+    }
     public boolean isKeyValueExists(List<Map<String, Object>> list, String key, String value) {
         for(Map<String, Object> pair:list){
             if(pair.get(key).toString().contains(value)) {
