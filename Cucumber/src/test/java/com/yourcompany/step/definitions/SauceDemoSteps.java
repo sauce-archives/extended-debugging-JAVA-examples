@@ -34,10 +34,10 @@ public class SauceDemoSteps {
     public static SauceDemoPage page;
     public Map<String, Object> performance;
     public Map<String, Object> metrics;
+    public Map<String, Object> performanceOutput;
+    public Map<String, Object> requestsOutput;
     List<Map<String, Object>> network;
     Map<String, Object> timingLog;
-    public Boolean performanceOutput;
-    public Boolean requestsOutput;
     public String sessionId;
     public Scenario scenarioRef;
 
@@ -122,7 +122,8 @@ public class SauceDemoSteps {
 
     @Then("^sauce:performance should assert performance is okay$")
     public void performance_should_assert_performance() throws Exception {
-        assertTrue(performanceOutput);
+        String performanceResult = performanceOutput.get("result").toString();
+        assertTrue(performanceResult == "pass");
     }
 
     @When("^I execute sauce:performance with on number of requests$")
@@ -132,7 +133,8 @@ public class SauceDemoSteps {
 
     @Then("^sauce:performance should assert number of requests is okay$")
     public void performance_should_assert_performance_requests() throws Exception {
-        assertTrue(requestsOutput);
+        String performanceResult = requestsOutput.get("result").toString();
+        assertTrue(performanceResult == "pass");
     }
 
     @After

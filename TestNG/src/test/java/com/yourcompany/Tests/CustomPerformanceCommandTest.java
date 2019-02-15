@@ -9,6 +9,7 @@ import org.testng.annotations.Test;
 import java.lang.reflect.Method;
 import java.net.MalformedURLException;
 import java.rmi.UnexpectedException;
+import java.util.Map;
 
 public class CustomPerformanceCommandTest extends TestBase {
     @Test(dataProvider = "hardCodedBrowsers")
@@ -24,10 +25,12 @@ public class CustomPerformanceCommandTest extends TestBase {
         page.loginUser();
         page.visitPage("/inventory.html");
         page.sleep(2000);
-        Boolean pageLoad = page.assertPerformancePageLoad(method.getName());
-        Assert.assertTrue(pageLoad);
-        Boolean requests = page.assertPerformancePageWeight(method.getName());
-        Assert.assertTrue(requests);
+        Map pageLoad = page.assertPerformancePageLoad(method.getName());
+        String pageloadResult = pageLoad.get("result").toString();
+        Assert.assertEquals(pageloadResult, "pass");
+        Map requests = page.assertPerformancePageWeight(method.getName());
+        String requestResult = requests.get("result").toString();
+        Assert.assertEquals(requestResult, "pass");
     }
 
 }

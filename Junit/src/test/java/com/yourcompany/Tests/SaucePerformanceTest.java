@@ -3,6 +3,7 @@ package com.yourcompany.Tests;
 import com.yourcompany.Pages.*;
 import org.junit.Test;
 import org.openqa.selenium.InvalidElementStateException;
+import java.util.Map;
 
 import static org.junit.Assert.*;
 
@@ -13,16 +14,17 @@ public class SaucePerformanceTest extends TestBase {
     }
 
     @Test
-    public void verifyHelloOutput() throws InvalidElementStateException {
+    public void verifySaucePerformance() throws InvalidElementStateException {
         String methodName = name.getMethodName();
         SauceDemoPage page = SauceDemoPage.visitPage(driver);
         page.loginUser();
         page.visitPage("/inventory.html");
         page.sleep(2000);
-        Boolean loadTime = page.assertPerformancePageLoad(methodName);
-        assertTrue(loadTime);
-        Boolean requests = page.assertPerformancePageWeight(methodName);
-        assertTrue(requests);
+        Map loadTime = page.assertPerformancePageLoad(methodName);
+        String pageloadResult = loadTime.get("result").toString();
+        assertEquals(pageloadResult, "pass");
+        Map requests = page.assertPerformancePageWeight(methodName);
+        String requestResult = requests.get("result").toString();
+        assertEquals(requestResult, "pass");
     }
-
 }

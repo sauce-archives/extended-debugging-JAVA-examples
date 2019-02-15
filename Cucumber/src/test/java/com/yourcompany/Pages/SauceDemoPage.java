@@ -94,20 +94,20 @@ public class SauceDemoPage {
         return (Map<String, Object>) this.jsDriver.executeScript("sauce:log", logType);
     }
 
-    public boolean assertPerformancePageLoad(String name) {
+    public Map assertPerformancePageLoad(String name) {
         Map<String, Object> logType = new HashMap();
         String myArray[] = { "load" };
         logType.put("name",name);
         logType.put("metrics", myArray);
-        return (Boolean) this.jsDriver.executeScript("sauce:performance", logType);
+        return (Map<String, Object>) this.jsDriver.executeScript("sauce:performance", logType);
     }
 
-    public boolean assertPerformancePageWeight(String name) {
+    public Map assertPerformancePageWeight(String name) {
         Map<String, Object> logType = new HashMap();
         String myArray[] = { "pageWeight" };
         logType.put("name",name);
         logType.put("metrics", myArray);
-        return (Boolean) this.jsDriver.executeScript("sauce:performance", logType);
+        return (Map<String, Object>)  this.jsDriver.executeScript("sauce:performance", logType);
     }
 
     public boolean isKeyValueExists(List<Map<String, Object>> list, String key, String value) {
