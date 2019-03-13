@@ -13,7 +13,7 @@ import java.util.Map;
 
 public class CustomPerformanceCommandTest extends TestBase {
     @Test(dataProvider = "hardCodedBrowsers")
-    public void verifyHelloOutput(String browser, String version, String os, Method method)
+    public void saucePerformanceCommands(String browser, String version, String os, Method method)
             throws MalformedURLException, InvalidElementStateException, UnexpectedException {
 
         this.createDriver(browser, version, os, method.getName());
@@ -28,9 +28,8 @@ public class CustomPerformanceCommandTest extends TestBase {
         Map pageLoad = page.assertPerformancePageLoad(method.getName());
         String pageloadResult = pageLoad.get("result").toString();
         Assert.assertEquals(pageloadResult, "pass");
-        Map requests = page.assertPerformancePageWeight(method.getName());
-        String requestResult = requests.get("result").toString();
-        Assert.assertEquals(requestResult, "pass");
+        Map speedIndex = page.assertPerformanceSpeedIndex(method.getName());
+        String speedIndexResult = speedIndex.get("result").toString();
+        Assert.assertEquals(speedIndexResult, "pass");
     }
-
 }

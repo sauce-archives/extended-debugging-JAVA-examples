@@ -76,24 +76,6 @@ public class SauceDemoPage {
         return (Map<String, Object>) this.jsDriver.executeScript("sauce:log", logType);
     }
 
-    public List getNetwork() {
-        Map<String, Object> logType = new HashMap();
-        logType.put("type","sauce:network");
-        return (List<Map<String, Object>>) this.jsDriver.executeScript("sauce:log", logType);
-    }
-
-    public Map getMetrics() {
-        Map<String, Object> logType = new HashMap();
-        logType.put("type","sauce:metrics");
-        return (Map<String, Object>) this.jsDriver.executeScript("sauce:log", logType);
-    }
-
-    public Map getTiming() {
-        Map<String, Object> logType = new HashMap();
-        logType.put("type","sauce:timing");
-        return (Map<String, Object>) this.jsDriver.executeScript("sauce:log", logType);
-    }
-
     public Map assertPerformancePageLoad(String name) {
         Map<String, Object> logType = new HashMap();
         String myArray[] = { "load" };
@@ -102,9 +84,9 @@ public class SauceDemoPage {
         return (Map<String, Object>) this.jsDriver.executeScript("sauce:performance", logType);
     }
 
-    public Map assertPerformancePageWeight(String name) {
+    public Map assertPerformanceSpeedIndex(String name) {
         Map<String, Object> logType = new HashMap();
-        String myArray[] = { "pageWeight" };
+        String myArray[] = { "speedIndex" };
         logType.put("name",name);
         logType.put("metrics", myArray);
         return (Map<String, Object>) this.jsDriver.executeScript("sauce:performance", logType);

@@ -66,26 +66,6 @@ public class SauceDemoSteps {
         page.visitPage("/inventory.html");
     }
 
-    @When("^I fetch metrics$")
-    public void user_fetch_metrics_logs() throws Exception {
-        metrics = page.getMetrics();
-    }
-
-    @Then("^PageLoadTime should be less than 5s$")
-    public void pageload_should_be_less_than_5s() throws Exception {
-        double pageLoadTime = new Double(metrics.get("domContentLoaded").toString()) - new Double(metrics.get("navigationStart").toString());
-        assertTrue(pageLoadTime < 5);
-    }
-
-    @When("^I fetch networkLogs$")
-    public void user_fetch_network_logs() throws Exception {
-        network = page.getNetwork();
-    }
-
-    @Then("^NetworkLog should contain mainjs$")
-    public void networklog_should_contain_mainjs() throws Exception {
-        assertTrue(page.isKeyValueExists(network, "url", "main.js"));
-    }
 
     @When("^I fetch performanceLog$")
     public void user_fetch_performace_logs() throws Exception {
@@ -105,16 +85,6 @@ public class SauceDemoSteps {
         assertTrue(performance.containsKey("domContentLoaded"));
     }
 
-    @When("^I fetch timingLog$")
-    public void user_fetch_timing_logs() throws Exception {
-        timingLog = page.getTiming();
-    }
-
-    @Then("^TimingLog should contain domLoading time$")
-    public void timinglog_should_contain_domLoadingTime() throws Exception {
-        assertTrue(timingLog.containsKey("domLoading"));
-    }
-
     @When("^I execute sauce:performance on page load$")
     public void user_execute_performance() throws Exception {
         performanceOutput = page.assertPerformancePageLoad(scenarioRef.getName());
@@ -126,12 +96,12 @@ public class SauceDemoSteps {
         assertTrue(performanceResult == "pass");
     }
 
-    @When("^I execute sauce:performance with on number of requests$")
+    @When("^I execute sauce:performance with on speedIndex$")
     public void user_execute_performance_requests() throws Exception {
-        requestsOutput = page.assertPerformancePageWeight(scenarioRef.getName());
+        requestsOutput = page.assertPerformancespeedIndex(scenarioRef.getName());
     }
 
-    @Then("^sauce:performance should assert number of requests is okay$")
+    @Then("^sauce:performance should assert speedIndex is okay$")
     public void performance_should_assert_performance_requests() throws Exception {
         String performanceResult = requestsOutput.get("result").toString();
         assertTrue(performanceResult == "pass");
