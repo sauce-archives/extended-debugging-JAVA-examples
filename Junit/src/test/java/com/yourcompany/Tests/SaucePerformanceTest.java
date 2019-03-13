@@ -23,7 +23,7 @@ public class SaucePerformanceTest extends TestBase {
         Map loadTime = page.assertPerformancePageLoad(methodName);
         String pageloadResult = loadTime.get("result").toString();
         assertEquals(pageloadResult, "pass");
-        Map requests = page.assertPerformancePageWeight(methodName);
+        Map requests = page.assertPerformanceSpeedIndex(methodName);
         String requestResult = requests.get("result").toString();
         assertEquals(requestResult, "pass");
     }
