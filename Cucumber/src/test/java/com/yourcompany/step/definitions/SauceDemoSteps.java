@@ -93,18 +93,18 @@ public class SauceDemoSteps {
     @Then("^sauce:performance should assert performance is okay$")
     public void performance_should_assert_performance() throws Exception {
         String performanceResult = performanceOutput.get("result").toString();
-        assertTrue(performanceResult == "pass");
+        assertEquals(performanceResult, "pass");
     }
 
-    @When("^I execute sauce:performance with on speedIndex$")
+    @When("^I execute sauce:performance with on firstByte$")
     public void user_execute_performance_requests() throws Exception {
-        requestsOutput = page.assertPerformancespeedIndex(scenarioRef.getName());
+        requestsOutput = page.assertPerformancefirstByte(scenarioRef.getName());
     }
 
-    @Then("^sauce:performance should assert speedIndex is okay$")
+    @Then("^sauce:performance should assert firstByte is okay$")
     public void performance_should_assert_performance_requests() throws Exception {
         String performanceResult = requestsOutput.get("result").toString();
-        assertTrue(performanceResult == "pass");
+        assertEquals(performanceResult, "pass");
     }
 
     @After

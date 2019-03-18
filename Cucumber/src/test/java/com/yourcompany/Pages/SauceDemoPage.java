@@ -84,12 +84,12 @@ public class SauceDemoPage {
         return (Map<String, Object>) this.jsDriver.executeScript("sauce:performance", logType);
     }
 
-    public Map assertPerformancespeedIndex(String name) {
+    public Map assertPerformancefirstByte(String name) {
         Map<String, Object> logType = new HashMap();
-        String myArray[] = { "speedIndex" };
+        String myArray[] = { "timeToFirstByte" };
         logType.put("name",name);
         logType.put("metrics", myArray);
-        return (Map<String, Object>)  this.jsDriver.executeScript("sauce:performance", logType);
+        return (Map<String, Object>) this.jsDriver.executeScript("sauce:performance", logType);
     }
 
     public boolean isKeyValueExists(List<Map<String, Object>> list, String key, String value) {
