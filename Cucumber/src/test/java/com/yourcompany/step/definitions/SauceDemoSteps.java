@@ -53,6 +53,7 @@ public class SauceDemoSteps {
         caps.setCapability("name", scenario.getName());
         caps.setCapability("build", SauceUtils.getBuildName());
         caps.setCapability("extendedDebugging", true);
+        caps.setCapability("capturePerformance", true);
 
         driver = new RemoteWebDriver(new URL(URL), caps);
 

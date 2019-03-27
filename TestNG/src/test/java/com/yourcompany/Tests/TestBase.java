@@ -95,6 +95,7 @@ public class TestBase  {
         capabilities.setCapability(CapabilityType.PLATFORM, os);
         capabilities.setCapability("name", methodName);
         capabilities.setCapability("extendedDebugging", true);
+        capabilities.setCapability("capturePerformance", true);
 
         if (buildTag != null) {
             capabilities.setCapability("build", buildTag);
