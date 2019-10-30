@@ -1,5 +1,6 @@
 package com.yourcompany.Pages;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -15,15 +16,6 @@ import java.util.List;
 import java.util.Map;
 
 public class SauceDemoPage {
-
-    @FindBy(xpath = "//input[@data-test='username']")
-    private WebElement usernameElem;
-
-    @FindBy(xpath = "//input[@data-test='password']")
-    private WebElement passwordElem;
-
-    @FindBy(xpath = "//input[@value='LOGIN']")
-    private WebElement loginElem;
 
     public WebDriver driver;
     public JavascriptExecutor jsDriver;
@@ -49,15 +41,18 @@ public class SauceDemoPage {
         String username = System.getenv("PERF_USERNAME") != null ? System.getenv("PERF_USERNAME") : "standard_user";
         this.enterUsername(username);
         this.enterPassword("secret_sauce");
+        WebElement loginElem = driver.findElement(By.xpath("//input[@value='LOGIN']"));
         loginElem.click();
     }
 
     public void enterPassword(String password) {
+        WebElement passwordElem = driver.findElement(By.xpath("//input[@data-test='password']"));
         passwordElem.click();
         passwordElem.sendKeys(password);
     }
 
     public void enterUsername(String username) {
+        WebElement usernameElem = driver.findElement(By.xpath("//input[@data-test='username']"));
         usernameElem.click();
         usernameElem.sendKeys(username);
     }
