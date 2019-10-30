@@ -1,8 +1,11 @@
 package com.yourcompany.Tests;
 
+import com.google.common.collect.Maps;
 import com.yourcompany.Pages.*;
 import org.junit.Test;
 import org.openqa.selenium.InvalidElementStateException;
+import org.openqa.selenium.JavascriptExecutor;
+
 import java.util.Map;
 
 import static org.junit.Assert.*;
@@ -40,9 +43,14 @@ public class PerformanceTestDemos extends TestBase {
     }
     @Test
     public void jankinessTest() throws InvalidElementStateException {
-        String methodName = name.getMethodName();
-        SauceDemoPage page = SauceDemoPage.visitPage(driver);
-
+        SauceDemoPage.visitPage(driver);
+        Map<String, Object> result = (Map<String, Object>)((JavascriptExecutor) driver).executeScript("sauce:jankinessCheck");
+        assertTrue("App is too janky", (double) result.get("score") >= .95);
     }
-
+    @Test
+    public void ultimateQaJankiness() throws InvalidElementStateException {
+        driver.get("https://www.ultimateqa.com");
+        Map<String, Object> result = (Map<String, Object>)((JavascriptExecutor) driver).executeScript("sauce:jankinessCheck");
+        assertTrue("App is too janky", (double) result.get("score") >= .95);
+    }
 }
