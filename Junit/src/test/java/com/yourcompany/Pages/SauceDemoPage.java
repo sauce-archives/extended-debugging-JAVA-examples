@@ -86,12 +86,4 @@ public class SauceDemoPage {
         logType.put("metrics", myArray);
         return (Map<String, Object>) this.jsDriver.executeScript("sauce:performance", logType);
     }
-    public boolean isKeyValueExists(List<Map<String, Object>> list, String key, String value) {
-        for(Map<String, Object> pair:list){
-            if(pair.get(key).toString().contains(value)) {
-                return true;
-            }
-        }
-        return false;
-    }
 }

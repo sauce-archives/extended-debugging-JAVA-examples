@@ -32,10 +32,17 @@ public class PerformanceTestDemos extends TestBase {
         page.visitPage("/inventory.html");
         page.sleep(2000);
         Map loadTime = page.getPageLoad(methodName);
-        String pageloadResult = loadTime.get("result").toString();
-        assertEquals(pageloadResult, "pass");
+        String pageLoadResult = loadTime.get("result").toString();
+        assertEquals(pageLoadResult, "pass");
         Map requests = page.getSpeedIndex(methodName);
         String requestResult = requests.get("result").toString();
         assertEquals(requestResult, "pass");
     }
+    @Test
+    public void jankinessTest() throws InvalidElementStateException {
+        String methodName = name.getMethodName();
+        SauceDemoPage page = SauceDemoPage.visitPage(driver);
+
+    }
+
 }
