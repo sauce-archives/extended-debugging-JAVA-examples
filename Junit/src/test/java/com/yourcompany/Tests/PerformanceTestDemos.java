@@ -17,12 +17,15 @@ public class PerformanceTestDemos extends TestBase {
         String methodName = name.getMethodName();
         SauceDemoPage page = SauceDemoPage.visitPage(driver);
         Map loadTime = page.getPageLoad(methodName);
-        String pageloadResult = loadTime.get("result").toString();
-        assertEquals(pageloadResult, "pass");
-        Map speedIndex = page.getSpeedIndex(methodName);
+        String pageLoadResult = loadTime.get("result").toString();
+        assertEquals(pageLoadResult, "pass");
+        Map performanceMetrics = page.getPerformance();
+        long maxAllowedSpeedIndex = 1000;
+        long currentSpeedIndex = (long) performanceMetrics.get("speedIndex");
+        assertTrue("Exceeded maximum allowed speed index", maxAllowedSpeedIndex >= currentSpeedIndex);
     }
     @Test
-    public void verifySaucePerformance() throws InvalidElementStateException {
+    public void verifyPerformanceFlowThroughApp() throws InvalidElementStateException {
         String methodName = name.getMethodName();
         SauceDemoPage page = SauceDemoPage.visitPage(driver);
         page.loginUser();
