@@ -71,7 +71,7 @@ public class SauceDemoPage {
         return (Map<String, Object>) this.jsDriver.executeScript("sauce:log", logType);
     }
 
-    public Map assertPerformancePageLoad(String name) {
+    public Map getPageLoad(String name) {
         Map<String, Object> logType = new HashMap();
         String myArray[] = { "load" };
         logType.put("name",name);
@@ -79,7 +79,7 @@ public class SauceDemoPage {
         return (Map<String, Object>) this.jsDriver.executeScript("sauce:performance", logType);
     }
 
-    public Map assertPerformanceSpeedIndex(String name) {
+    public Map getSpeedIndex(String name) {
         Map<String, Object> logType = new HashMap();
         String myArray[] = { "speedIndex" };
         logType.put("name",name);

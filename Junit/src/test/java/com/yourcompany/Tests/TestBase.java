@@ -121,8 +121,11 @@ public class TestBase implements SauceOnDemandSessionIdProvider {
     }
 
     @After
-    public void tearDown() throws Exception {
-        driver.quit();
+    public void tearDown() {
+        if(driver != null)
+        {
+            driver.quit();
+        }
     }
 
     /**
