@@ -47,10 +47,19 @@ public class PerformanceTestDemos extends TestBase {
         Map<String, Object> result = (Map<String, Object>)((JavascriptExecutor) driver).executeScript("sauce:jankinessCheck");
         assertTrue("App is too janky", (double) result.get("score") >= .95);
     }
+
     @Test
     public void ultimateQaJankiness() throws InvalidElementStateException {
         driver.get("https://www.ultimateqa.com");
-        Map<String, Object> result = (Map<String, Object>)((JavascriptExecutor) driver).executeScript("sauce:jankinessCheck");
-        assertTrue("App is too janky", (double) result.get("score") >= .95);
+        Map<String, Object> jankinessMetrics = (Map<String, Object>)((JavascriptExecutor) driver).executeScript("sauce:jankinessCheck");
+        double jankinessScore = (double) jankinessMetrics.get("score");
+        assertTrue("App is too janky with a value of " + jankinessScore, jankinessScore >= .80);
+    }
+    @Test
+    public void gooniesJankiness() throws InvalidElementStateException {
+        driver.get("https://the-goonies.webflow.io");
+        Map<String, Object> jankinessMetrics = (Map<String, Object>)((JavascriptExecutor) driver).executeScript("sauce:jankinessCheck");
+        double jankinessScore = (double) jankinessMetrics.get("score");
+        assertTrue("App is too janky with a value of " + jankinessScore, jankinessScore >= .80);
     }
 }
